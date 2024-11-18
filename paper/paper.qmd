@@ -1,39 +1,27 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Perceived Challenges in Climate Action Implementation: How Demographics and Income Influence Barriers to Policy Uptake"
+subtitle: "Lower-Income and Minority Groups Face Greater Perceived Obstacles to Climate Solutions"
 author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: [https://github.com/RohanAlexander/starter_folder](https://github.com/RohanAlexander/starter_folder)."
+  - Lexi Knight
+thanks: "Code and data are available at: [https://github.com/LexiKnight/climate_challenges_toronto](https://github.com/LexiKnight/climate_challenges_toronto)."
 date: today
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
-format: pdf
+abstract: "Understanding public perceptions of climate action challenges is crucial for effective policy design and community engagement. This study analyzes survey responses from diverse demographic groups to identify which climate actions—across buildings, energy, transportation, consumption, and greenspace—are perceived as the most difficult to implement. We found that lower-income individuals and racial minority groups reported greater barriers, particularly in adopting energy-efficient technologies and sustainable transportation. These findings highlight the need for equitable and targeted policy support to ensure that climate initiatives are accessible and feasible for all members of society."
+format:
+  pdf:
+    toc: true
 number-sections: true
 bibliography: references.bib
 ---
 
-```{r}
-#| include: false
-#| warning: false
-#| message: false
-
-library(tidyverse)
-library(palmerpenguins)
-```
-
-
 # Introduction
 
 Overview paragraph
-
 Estimand paragraph
-
 Results paragraph
-
 Why it matters paragraph
 
-Telegraphing paragraph: The remainder of this paper is structured as follows. @sec-data....
+The remainder of this paper is structured as follows: @sec-data presents the methods used to analyze these demographic differences, followed by @sec-results, which details the results of the comparison between Rosedale-Moore Park and Downtown Yonge East. @sec-discussion offers a discussion of the findings, highlighting the implications for understanding residential segregation in Toronto. Finally, @sec-conclusion concludes with a reflection on the limitations of the study and suggestions for future research directions.
 
 
 
@@ -41,76 +29,16 @@ Telegraphing paragraph: The remainder of this paper is structured as follows. @s
 
 
 # Data {#sec-data}
-
-## Overview
-
-We use the statistical programming language R [@citeR].... Our data [@shelter].... Following @tellingstories, we consider...
-
-Overview text
-
-## Measurement
-	
-Some paragraphs about how we go from a phenomena in the world to an entry in the dataset.
-
-## Outcome variables
-
-Add graphs, tables and text. Use sub-sub-headings for each outcome variable or update the subheading to be singular.
+## Software and R-packages
+## Methodology 
+### Data Collection
+### Data Cleaning
+### Data Analysis
+## Features
+### 
 
 
-
-Some of our data is of penguins (@fig-bills), from @palmerpenguins.
-
-```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
-#| echo: false
-
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
-
-Talk more about it.
-
-And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
-
-```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
-#| echo: false
-#| warning: false
-#| message: false
-
-analysis_data <- read_csv(here::here("data/02-analysis_data/analysis_data.csv"))
-
-analysis_data |> 
-  ggplot(aes(x = width, y = length)) +
-  geom_point(alpha = 0.8) +
-  theme_minimal() +
-  labs(x = "Wing width (mm)",
-       y = "Wing length (mm)")
-```
-
-Talk way more about it. 
-
-## Predictor variables
-
-Add graphs, tables and text.
-
-Use sub-sub-headings for each outcome variable and feel free to combine a few into one if they go together naturally.
-
-
-
-
-
-
-
-
-# Model
+# Model {#sec-model}
 
 The goal of our modelling strategy is twofold. Firstly,...
 
@@ -132,46 +60,18 @@ y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
 We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
 
 
-### Model justification
-
+### Model Specifications ###
+### Model Justification 
 We expect a positive relationship between the size of the wings and time spent aloft. In particular...
 
 We can use maths by including latex between dollar signs, for instance $\theta$.
-
+#### Response Variable ####
+#### Input Variabless ####
+#### Model Structure ####
+#### Parameter Estimation ####
 
 # Results
-
 Our results are summarized in @tbl-modelresults.
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-library(rstanarm)
-
-first_model <-
-  readRDS(file = here::here("models/first_model.rds"))
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| label: tbl-modelresults
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
-#| warning: false
-
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
-```
-
-
 
 
 # Discussion
@@ -186,16 +86,20 @@ Please don't use these as sub-heading labels - change them to be what your point
 
 ## Third discussion point
 
-## Weaknesses and next steps
+## Limitations
 
-Weaknesses and next steps should also be included.
+## Future Directions
+
+# Conclusion {#sec-conclusion}
+
 
 \newpage
 
 \appendix
 
-# Appendix {-}
+# Appendix {#sec-appendix}
 
+\newpage
 
 # Additional data details
 
@@ -248,7 +152,6 @@ plot(first_model, "trace")
 
 plot(first_model, "rhat")
 ```
-
 
 
 \newpage
